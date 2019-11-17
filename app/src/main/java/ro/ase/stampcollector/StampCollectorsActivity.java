@@ -23,7 +23,7 @@ public class StampCollectorsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_stamp_collectors);
+        setContentView(R.layout.activity_stamp_collectors);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //
@@ -32,7 +32,7 @@ public class StampCollectorsActivity extends AppCompatActivity {
 //
 //     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        initalizeDisplayContent();
 
     }
 
