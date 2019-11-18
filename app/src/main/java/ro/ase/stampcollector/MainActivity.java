@@ -10,6 +10,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -53,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_stamps_list, R.id.nav_stamps_collectors, R.id.nav_slideshow,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send)
@@ -64,16 +64,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        initializeDisplayContent();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -110,11 +109,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = menuItem.getItemId();
 
+        Fragment fragment = null;
+
         if(id == R.id.nav_stamps_list){
-            displayStamps();
+//           displayStamps();
         }else if(id == R.id.nav_stamps_collectors){
-            startActivity(new Intent(MainActivity.this,
-                    StampCollectorsActivity.class));
+
+
             selectNavigationMenuItem(R.id.nav_stamps_collectors);
         }
 
@@ -128,6 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
-        mStampRecyclerAdapter.notifyDataSetChanged();
+//        mStampRecyclerAdapter.notifyDataSetChanged();
     }
 }

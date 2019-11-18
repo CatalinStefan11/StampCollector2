@@ -9,16 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CollectorsRecyclerAdapter extends
         RecyclerView.Adapter<CollectorsRecyclerAdapter.ViewHolder> {
 
     private final Context mContext;
-    private final List<User> mUsers;
+    private final ArrayList<User> mUsers;
     private final LayoutInflater mLayoutInflater;
 
-    public CollectorsRecyclerAdapter(Context context, List<User> users) {
+    public CollectorsRecyclerAdapter(Context context, ArrayList<User> users) {
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);
         this.mUsers = users;

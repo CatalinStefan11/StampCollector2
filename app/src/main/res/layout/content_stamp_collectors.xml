@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_stamp_collectors">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_collectors"
+        android:id="@+id/recycler_collectors2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

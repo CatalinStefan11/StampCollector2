@@ -15,7 +15,7 @@
         android:id="@+id/nav_stamps_collectors"
         android:name="ro.ase.stampcollector.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_stamps_collectors" />
 
     <fragment
         android:id="@+id/nav_slideshow"
