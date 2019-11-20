@@ -13,5 +13,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="title_activity_stamp_collectors">StampCollectorsActivity</string>
-</resources>
+
+    <string name="send_email_collector">Send Email</string>
+
+    <string name="title_activity_collector">Top 10 Stamps Collectors</string>
+    </resources>

@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/nav_stamps_list"
-        android:name="ro.ase.stampcollector.ui.home.HomeFragment"
+        android:name="ro.ase.stampcollector.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_stamps_collectors"
-        android:name="ro.ase.stampcollector.ui.gallery.GalleryFragment"
+        android:name="ro.ase.stampcollector.StampCollectorsFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_stamps_collectors" />
 
