@@ -1,4 +1,4 @@
-package ro.ase.stampcollector.ui.home;
+package ro.ase.stampcollector;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,7 +23,6 @@ import ro.ase.stampcollector.StampRecyclerAdapter;
 
 public class HomeFragment extends Fragment {
 
-//    private HomeViewModel homeViewModel;
 
     private StampRecyclerAdapter mStampRecyclerAdapter;
     private RecyclerView mRecyclerStamps;

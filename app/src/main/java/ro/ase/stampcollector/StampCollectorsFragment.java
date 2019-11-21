@@ -1,4 +1,4 @@
-package ro.ase.stampcollector.ui.gallery;
+package ro.ase.stampcollector;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,10 @@ import ro.ase.stampcollector.Network;
 import ro.ase.stampcollector.R;
 import ro.ase.stampcollector.ui.tools.ToolsFragment;
 
-public class GalleryFragment extends Fragment {
+public class StampCollectorsFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
     private RecyclerView mCollectorsRecycler;
     private CollectorsRecyclerAdapter mCollectorsRecyclerAdapter;
-    private GridLayoutManager mGridLayoutManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +39,6 @@ public class GalleryFragment extends Fragment {
         mCollectorsRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mCollectorsRecyclerAdapter = new CollectorsRecyclerAdapter(getActivity(), Network.returnUsers());
         mCollectorsRecycler.setAdapter(mCollectorsRecyclerAdapter);
-
 
         return root;
     }
