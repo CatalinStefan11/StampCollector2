@@ -12,14 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StampCollectorsActivity"
-            android:label="@string/title_activity_stamp_collectors"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ro.ase.stampcollector.MainActivity" />
-        </activity>
+            android:name=".NoteActivity"
+            android:label="@string/title_activity_note"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".CollectorActivity"
+            android:label="@string/title_activity_collector"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".StampActivity"
             android:theme="@style/AppTheme.NoActionBar" />

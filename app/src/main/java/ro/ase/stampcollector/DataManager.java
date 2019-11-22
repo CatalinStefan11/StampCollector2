@@ -11,14 +11,28 @@ public class DataManager {
     private  static DataManager ourInstance = null;
 
     private List<StampInfo> mStamps= new ArrayList<>();
+    private List<NoteStampInfo> mNotes = new ArrayList<>();
 
     public  static DataManager getInstance(){
         if(ourInstance == null){
             ourInstance = new DataManager();
             ourInstance.initializeStamps();
+            ourInstance.initalizeNotes();
         }
         return ourInstance;
     }
+
+    public List<NoteStampInfo> getmNotes() {
+        return mNotes;
+    }
+
+    public int createNewNote(String title, String description){
+        NoteStampInfo note = new NoteStampInfo(title,description);
+        mNotes.add(note);
+        return mNotes.size() - 1;
+    }
+
+    public void removeNote(int index){mNotes.remove(index);}
 
 
     public List<StampInfo> getStamps() {
@@ -33,6 +47,21 @@ public class DataManager {
     }
 
     public void removeStamp(int index){ mStamps.remove(index); }
+
+    public void initalizeNotes(){
+        mNotes.add(new NoteStampInfo("GERALD KING LUNDY ISLE 1897",
+                "QUEEN VICTORIAN CHARITY STAMP"));
+
+        mNotes.add(new NoteStampInfo("Apollo 11 Moonlanding Lundy Seamail 1969",
+                "Kennedy Eagle opt black"));
+
+        mNotes.add(new NoteStampInfo("France 1908 Tractor",
+                "Agriculture Automobile Farming poster Stamp Sower La Semeuse"));
+
+    }
+
+
+
 
     public void initializeStamps(){
         mStamps.add(new StampInfo("Romania. 1906. King Karl I.",

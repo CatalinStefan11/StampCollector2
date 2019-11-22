@@ -4,16 +4,21 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+
+import ro.ase.stampcollector.User;
+
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<ArrayList<User>> mUsers;
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-      //  mText.setValue("This is home fragment");
+    public HomeViewModel(ArrayList<User> users) {
+        this.mUsers = new MutableLiveData<>(users);
+
     }
 
-    public LiveData<String> getText() {
-        return mText;
+
+    public ArrayList<User> getUsers() {
+        return mUsers.getValue();
     }
 }
