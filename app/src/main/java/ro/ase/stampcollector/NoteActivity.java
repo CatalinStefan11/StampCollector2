@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -41,13 +42,15 @@ public class NoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createNewNote();
+                Snackbar.make(v, "Note saved to Wishlist!", Snackbar.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Note saved to Wishlist!",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
-
-
+    
 
     private void createNewNote(){
         DataManager dm = DataManager.getInstance();
