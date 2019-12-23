@@ -7,37 +7,38 @@
 
     <fragment
         android:id="@+id/nav_stamps_list"
-        android:name="ro.ase.stampcollector.HomeFragment"
-        android:label="@string/menu_home"
+        android:name="ro.ase.stampcollector.MyStampsListFragment"
+        android:label="@string/stamps_list"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_stamps_collectors"
         android:name="ro.ase.stampcollector.StampCollectorsFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/title_activity_collector"
         tools:layout="@layout/fragment_stamps_collectors" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="ro.ase.stampcollector.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_wishlist"
+        android:name="ro.ase.stampcollector.StampsWishlistFragment"
+        android:label="@string/stamps_wishlist"
+        tools:layout="@layout/fragment_wishlist" />
 
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="ro.ase.stampcollector.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_slideshow"-->
+<!--        android:name="ro.ase.stampcollector.ui.slideshow.SlideshowFragment"-->
+<!--        android:label="@string/menu_slideshow"-->
+<!--        tools:layout="@layout/fragment_slideshow" />-->
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="ro.ase.stampcollector.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_tools"-->
+<!--        android:name="ro.ase.stampcollector.ui.tools.ToolsFragment"-->
+<!--        android:label="@string/menu_tools"-->
+<!--        tools:layout="@layout/fragment_tools" />-->
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="ro.ase.stampcollector.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_send"-->
+<!--        android:name="ro.ase.stampcollector.ui.send.SendFragment"-->
+<!--        android:label="@string/menu_send"-->
+<!--        tools:layout="@layout/fragment_send" />-->
 </navigation>

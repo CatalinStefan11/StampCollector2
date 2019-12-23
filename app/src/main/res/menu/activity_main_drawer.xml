@@ -6,25 +6,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_stamps_list"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="My Stamps" />
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/stamps_list" />
         <item
             android:id="@+id/nav_stamps_collectors"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Top 10 Stamps Collectors" />
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/title_activity_collector" />
+        <item
+            android:id="@+id/nav_wishlist"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="@string/stamps_wishlist" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
 
 </menu>

@@ -19,7 +19,7 @@ public class CollectorActivity extends AppCompatActivity {
     private TextView mTextCollectorCompany;
     private TextView mTextCollectorPhone;
     private TextView mTextCollectorEmail;
-    private Button SendEmailButton;
+    private Button mSendEmailButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +34,8 @@ public class CollectorActivity extends AppCompatActivity {
         mTextCollectorCompany = findViewById(R.id.collector_company);
         mTextCollectorPhone = findViewById(R.id.collector_phone);
         mTextCollectorEmail = findViewById(R.id.collector_email);
-        SendEmailButton = findViewById(R.id.button_email);
+        mSendEmailButton = findViewById(R.id.button_email);
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         readDisplayStateValues();
         sendEmailButtonSet();
@@ -79,8 +71,7 @@ public class CollectorActivity extends AppCompatActivity {
 
     private void sendEmailButtonSet(){
 
-        final Button sendEmail = findViewById(R.id.button_email);
-        sendEmail.setOnClickListener(new View.OnClickListener() {
+        mSendEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendEmail();

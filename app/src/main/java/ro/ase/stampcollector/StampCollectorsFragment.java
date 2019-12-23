@@ -11,12 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ro.ase.stampcollector.ui.home.HomeViewModel;
+
 
 public class StampCollectorsFragment extends Fragment {
 
     private RecyclerView mCollectorsRecycler;
     private CollectorsRecyclerAdapter mCollectorsRecyclerAdapter;
-
+    private HomeViewModel homeViewModel;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -25,16 +27,9 @@ public class StampCollectorsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        galleryViewModel =
-//                ViewModelProviders.of(this).get(GalleryViewModel.class);
+
+
         View root = inflater.inflate(R.layout.fragment_stamps_collectors, container, false);
-//        final TextView textView = root.findViewById(R.id.text_gallery);
-//        galleryViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
 
 
         mCollectorsRecycler = root.findViewById(R.id.recycler_collectors2);
@@ -42,12 +37,13 @@ public class StampCollectorsFragment extends Fragment {
         mCollectorsRecyclerAdapter = new CollectorsRecyclerAdapter(getActivity(), Network.returnUsers());
         mCollectorsRecycler.setAdapter(mCollectorsRecyclerAdapter);
 
-
         return root;
     }
 
 
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }
 

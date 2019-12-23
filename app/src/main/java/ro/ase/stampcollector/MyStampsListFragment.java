@@ -10,19 +10,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
+import ro.ase.stampcollector.ui.home.HomeViewModel;
 
-public class HomeFragment extends Fragment {
 
-//    private HomeViewModel homeViewModel;
+public class MyStampsListFragment extends Fragment {
 
+    private HomeViewModel homeViewModel;
     private StampRecyclerAdapter mStampRecyclerAdapter;
     private RecyclerView mRecyclerStamps;
     private LinearLayoutManager mStampLayoutManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        homeViewModel =
-//                ViewModelProviders.of(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 //        final TextView textView = root.findViewById(R.id.text_home);
 //        homeViewModel.getText().observe(this, new Observer<String>() {
@@ -42,5 +42,11 @@ public class HomeFragment extends Fragment {
         mRecyclerStamps.setAdapter(mStampRecyclerAdapter);
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        mStampRecyclerAdapter.notifyDataSetChanged();
+        super.onResume();
     }
 }

@@ -26,17 +26,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity  {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private StampRecyclerAdapter mStampRecyclerAdapter;
-    private RecyclerView mRecyclerStamps;
-    private LinearLayoutManager mStampLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +39,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, StampActivity.class));
-
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//            }
+//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_stamps_list, R.id.nav_stamps_collectors, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_stamps_list, R.id.nav_stamps_collectors, R.id.nav_wishlist)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -67,12 +61,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_create_new_stamp) {
+            startActivity(new Intent(MainActivity.this, StampActivity.class));
+            return true;
+        } else if ( id == R.id.action_create_new_note) {
+            startActivity(new Intent(MainActivity.this, NoteActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -81,54 +94,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 || super.onSupportNavigateUp();
     }
 
-    private void initializeDisplayContent(){
-        mRecyclerStamps = (RecyclerView)findViewById(R.id.recyclre_item);
-        mStampLayoutManager = new LinearLayoutManager(this);
-
-
-        List<StampInfo> stamps = DataManager.getInstance().getStamps();
-        mStampRecyclerAdapter = new StampRecyclerAdapter(this, stamps);
-        mRecyclerStamps.setAdapter(mStampRecyclerAdapter);
-        displayStamps();
-
-    }
-
-    private void displayStamps(){
-        mRecyclerStamps.setLayoutManager(mStampLayoutManager);
-        selectNavigationMenuItem(R.id.nav_stamps_list);
-    }
-
-    private void selectNavigationMenuItem(int id){
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        Menu menu = navigationView.getMenu();
-        menu.findItem(id).setChecked(true);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
-
-        int id = menuItem.getItemId();
-
-        Fragment fragment = null;
-
-        if(id == R.id.nav_stamps_list){
-//           displayStamps();
-        }else if(id == R.id.nav_stamps_collectors){
-
-
-            selectNavigationMenuItem(R.id.nav_stamps_collectors);
-        }
-
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        mStampRecyclerAdapter.notifyDataSetChanged();
+
     }
 }
