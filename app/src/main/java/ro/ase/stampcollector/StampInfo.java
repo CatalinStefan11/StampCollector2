@@ -1,7 +1,10 @@
 package ro.ase.stampcollector;
 
+import androidx.room.Entity;
+
 import java.util.Date;
 import java.util.Objects;
+
 
 public final class StampInfo {
 

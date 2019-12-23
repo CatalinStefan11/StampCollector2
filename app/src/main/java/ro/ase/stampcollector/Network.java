@@ -88,7 +88,7 @@ public class Network extends AsyncTask<URL, Integer, InputStream>{
 
         try {
             JSONObject jsonObject = new JSONObject(stringOfUsers);
-            JSONArray usersArray = jsonObject.getJSONArray("collectors");
+            JSONArray usersArray = jsonObject.getJSONArray("users");
             for(int i = 0; i < usersArray.length(); i++){
                 JSONObject JSONuser = usersArray.getJSONObject(i);
                 Collector collector = new Collector();

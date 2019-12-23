@@ -1,24 +1,23 @@
 package ro.ase.stampcollector.ui.home;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
-import ro.ase.stampcollector.User;
+import ro.ase.stampcollector.Collector;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<User>> mUsers;
+    private MutableLiveData<ArrayList<Collector>> mUsers;
 
-    public HomeViewModel(ArrayList<User> users) {
-        this.mUsers = new MutableLiveData<>(users);
+    public HomeViewModel(ArrayList<Collector> collectors) {
+        this.mUsers = new MutableLiveData<>(collectors);
 
     }
 
 
-    public ArrayList<User> getUsers() {
+    public ArrayList<Collector> getUsers() {
         return mUsers.getValue();
     }
 }
