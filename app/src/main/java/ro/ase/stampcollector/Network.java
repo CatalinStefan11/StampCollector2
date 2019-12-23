@@ -81,31 +81,31 @@ public class Network extends AsyncTask<URL, Integer, InputStream>{
         }
     }
 
-    public static ArrayList<User> returnUsers(){
+    public static ArrayList<Collector> returnUsers(){
         Network n = new Network();
         String stringOfUsers = n.GetUsers();
-        ArrayList<User> users = new ArrayList<>();
+        ArrayList<Collector> collectors = new ArrayList<>();
 
         try {
             JSONObject jsonObject = new JSONObject(stringOfUsers);
-            JSONArray usersArray = jsonObject.getJSONArray("users");
+            JSONArray usersArray = jsonObject.getJSONArray("collectors");
             for(int i = 0; i < usersArray.length(); i++){
                 JSONObject JSONuser = usersArray.getJSONObject(i);
-                User user = new User();
-                user.setId(Integer.parseInt(JSONuser.getString("id")));
-                user.setName(JSONuser.getString("name"));
-                user.setEmail(JSONuser.getString("email"));
+                Collector collector = new Collector();
+                collector.setId(Integer.parseInt(JSONuser.getString("id")));
+                collector.setName(JSONuser.getString("name"));
+                collector.setEmail(JSONuser.getString("email"));
 
                 JSONObject JSONadress = new JSONObject(JSONuser.getString("address"));
-                user.setCity(JSONadress.getString("city"));
+                collector.setCity(JSONadress.getString("city"));
 
                 JSONObject JSONCompany = new JSONObject(JSONuser.getString("company"));
-                user.setCompanyName(JSONCompany.getString("name"));
+                collector.setCompanyName(JSONCompany.getString("name"));
 
-                user.setPhone(JSONuser.getString("phone"));
-                user.setWebsite(JSONuser.getString("website"));
+                collector.setPhone(JSONuser.getString("phone"));
+                collector.setWebsite(JSONuser.getString("website"));
 
-                users.add(user);
+                collectors.add(collector);
 
             }
 
@@ -113,7 +113,7 @@ public class Network extends AsyncTask<URL, Integer, InputStream>{
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return users;
+        return collectors;
     }
 
 }

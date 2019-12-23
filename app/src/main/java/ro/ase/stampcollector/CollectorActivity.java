@@ -3,21 +3,17 @@ package ro.ase.stampcollector;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class CollectorActivity extends AppCompatActivity {
 
 
-    public static final String PARCELABLE_USER = "User";
+    public static final String PARCELABLE_USER = "Collector";
     private TextView mTextCollectorName;
     private TextView mTextCollectorCity;
     private TextView mTextCollectorCompany;
@@ -56,12 +52,12 @@ public class CollectorActivity extends AppCompatActivity {
 
     private void readDisplayStateValues(){
         Intent intent = getIntent();
-        User user = intent.getParcelableExtra(PARCELABLE_USER);
-        mTextCollectorName.setText(user.getName());
-        mTextCollectorCity.setText(user.getCity());
-        mTextCollectorCompany.setText(user.getCompanyName());
-        mTextCollectorEmail.setText(user.getEmail());
-        mTextCollectorPhone.setText(user.getPhone());
+        Collector collector = intent.getParcelableExtra(PARCELABLE_USER);
+        mTextCollectorName.setText(collector.getName());
+        mTextCollectorCity.setText(collector.getCity());
+        mTextCollectorCompany.setText(collector.getCompanyName());
+        mTextCollectorEmail.setText(collector.getEmail());
+        mTextCollectorPhone.setText(collector.getPhone());
     }
 
     private void sendEmail() {

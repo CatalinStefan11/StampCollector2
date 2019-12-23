@@ -3,7 +3,7 @@ package ro.ase.stampcollector;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class User implements Parcelable {
+public class Collector implements Parcelable {
 
     private int id;
     private String name;
@@ -15,21 +15,21 @@ public class User implements Parcelable {
 
 
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
+    public static final Creator<Collector> CREATOR = new Creator<Collector>() {
         @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
+        public Collector createFromParcel(Parcel in) {
+            return new Collector(in);
         }
 
         @Override
-        public User[] newArray(int size) {
-            return new User[size];
+        public Collector[] newArray(int size) {
+            return new Collector[size];
         }
     };
 
-    public User(){}
+    public Collector(){}
 
-    public User(int id, String name, String email, String companyName, String city, String phone, String website) {
+    public Collector(int id, String name, String email, String companyName, String city, String phone, String website) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -39,7 +39,7 @@ public class User implements Parcelable {
         this.website = website;
     }
 
-    public User(Parcel parcel)
+    public Collector(Parcel parcel)
     {
         this.id = parcel.readInt();
         this.name = parcel.readString();

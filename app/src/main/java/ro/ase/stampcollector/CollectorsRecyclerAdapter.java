@@ -11,19 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CollectorsRecyclerAdapter extends
         RecyclerView.Adapter<CollectorsRecyclerAdapter.ViewHolder> {
 
     private final Context mContext;
-    private final ArrayList<User> mUsers;
+    private final ArrayList<Collector> mCollectors;
     private final LayoutInflater mLayoutInflater;
 
-    public CollectorsRecyclerAdapter(Context context, ArrayList<User> users) {
+    public CollectorsRecyclerAdapter(Context context, ArrayList<Collector> collectors) {
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);
-        this.mUsers = users;
+        this.mCollectors = collectors;
     }
 
     @NonNull
@@ -36,16 +35,16 @@ public class CollectorsRecyclerAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user = mUsers.get(position);
-        holder.mUserName.setText(user.getName());
-        holder.mUserCity.setText(user.getCity());
+        Collector collector = mCollectors.get(position);
+        holder.mUserName.setText(collector.getName());
+        holder.mUserCity.setText(collector.getCity());
         holder.mCurrentPosition = position;
 
     }
 
     @Override
     public int getItemCount() {
-        return mUsers.size();
+        return mCollectors.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -63,7 +62,7 @@ public class CollectorsRecyclerAdapter extends
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, CollectorActivity.class);
-                    intent.putExtra(CollectorActivity.PARCELABLE_USER, mUsers.get(mCurrentPosition));
+                    intent.putExtra(CollectorActivity.PARCELABLE_USER, mCollectors.get(mCurrentPosition));
                     mContext.startActivity(intent);
                 }
             });

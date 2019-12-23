@@ -1,10 +1,21 @@
 package ro.ase.stampcollector;
 
+import androidx.lifecycle.LifecycleObserver;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 import java.util.Objects;
 
+@Entity(tableName = "stamps")
 public final class StampInfo {
 
+    @Ignore
+    private String uid;
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String title;
     private String description;
     private String issuedOn;
