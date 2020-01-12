@@ -13,7 +13,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
-    <string name="app_collector">Press back for save</string>
+    <string name="app_collector">StampsCollector</string>
     <string name="button_save">Save note</string>
 
     <string name="hint_title">Stamp title</string>
@@ -25,6 +25,10 @@
 
     <string name="action_create_stamp">Add stamp to my list</string>
     <string name="action_create_note">Add note to wishlist</string>
+    <string name="action_current_user">Manage user state</string>
+
+
+    <string name="current_user_text_activity">Your are logged in as:</string>
 
     <string name="send_email_collector">Send Email</string>
 
@@ -63,5 +67,16 @@
     <string name="consent_text">Consent</string>
     <string name="become_host_text">Consent</string>
     <string name="sign_out_text">Sign Out</string>
+    <string name="delete_button">Delete stamp</string>
+    <string name="write_to_file">Write to file</string>
+    <string name="read_from_file">Read from file</string>
+    <string name="onCancelledFirebase">onCancelled</string>
+    <string name="FireBaseFailed">Failed to read!</string>
+    <string name="FileToLoadFireBase">Failed to read CV object</string>
+    <string name="usernameError">Enter a valid username</string>
+    <string name="passwordError">You must provide a password</string>
+    <string name="update_user">Update username</string>
+    <string name="delete">Delete</string>
+    <string name="action_state_user_management">Current user state</string>
 
 </resources>

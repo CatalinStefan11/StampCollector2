@@ -1,43 +1,103 @@
 package ro.ase.stampcollector;
 
+import android.content.Context;
 import java.util.List;
 
-public class UserRepository {
+
+public class UserRepository  {
 
     private final UserDao mUserDao;
+    private final StampDao mStampDao;
     private static UserRepository instance;
+    private User currentUser;
 
 
-    private UserRepository(UserDao userDao)
+
+    private UserRepository(UserDao userDao, StampDao stampDao)
     {
         this.mUserDao = userDao;
+        this.mStampDao = stampDao;
     }
 
-    public static UserRepository getInstance(UserDao userDao)
+    public static UserRepository getInstance(Context context)
     {
         if(instance == null)
+
         {
-            instance = new UserRepository(userDao);
+
+            instance = new UserRepository(StampsDatabase.getInstance(context).userDao(),
+                    StampsDatabase.getInstance(context).stampDao());
         }
         return instance;
     }
 
-    public boolean isValidAccount(String username, final String password)
+
+
+    public User getCurrentUser()
+    {
+        return currentUser;
+    }
+
+
+    public User login(String username, final String password)
     {
         User user = mUserDao.getAccount(username);
-        return user.getPassword().equals(password);
+        if(user.getPassword().equals(password))
+        {
+            currentUser = user;
+            return user;
+
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    public void insertUser(String username, String password)
+    public void deleteUser(User user)
     {
-        User account = new User(username, password);
-        mUserDao.saveUser(account);
+        mUserDao.deleteUser(user);
     }
 
-    public List<Stamp2> getStamps(){
-        List<Stamp2> stamps = mUserDao.getStampsList();
-        return stamps;
+    public void updateUser(User user){
+        mUserDao.updateUser(user);
     }
+
+    public User getUserById(long id){
+        return mUserDao.getUserById(id);
+    }
+
+    public void addUser(String username, String passowrd){
+
+        User user = new User(username, passowrd);
+        mUserDao.addUser(user);
+    }
+
+    public void addStamp(User currentUser, Stamp2 stamp)
+    {
+        stamp.setUserId(currentUser.id);
+        mStampDao.addStamp(stamp);
+    }
+
+    public List<Stamp2> getStamps(User currentUser)
+    {
+        return mStampDao.getAllStamps(currentUser.id);
+    }
+
+    public void updateStamp(Stamp2 stamp)
+    {
+        mStampDao.update(stamp);
+    }
+
+    public void deleteStamp(Stamp2 stamp) { mStampDao.deleteStamp(stamp);}
+
+    public Stamp2 getStamp(int id)
+    {
+
+        return mStampDao.getStamp(id);
+    }
+
 
 
 }
+

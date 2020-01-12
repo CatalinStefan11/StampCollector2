@@ -11,14 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ro.ase.stampcollector.ui.home.HomeViewModel;
+
 
 
 public class StampCollectorsFragment extends Fragment {
 
     private RecyclerView mCollectorsRecycler;
     private CollectorsRecyclerAdapter mCollectorsRecyclerAdapter;
-    private HomeViewModel homeViewModel;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "408438119910",
+    "firebase_url": "https://stampscollector-8a88b.firebaseio.com",
+    "project_id": "stampscollector-8a88b",
+    "storage_bucket": "stampscollector-8a88b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408438119910:android:7c87418917b350ae248a27",
+        "android_client_info": {
+          "package_name": "ro.ase.stampcollector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408438119910-42fqcq5pkuhljuvm0sjsh4h7tjvs81qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.ase.stampcollector",
+            "certificate_hash": "252eb49e4e68b0fe3b3a0aad9439387a51827477"
+          }
+        },
+        {
+          "client_id": "408438119910-m8mkpavj0120dcjuap60h3eifu354tl1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAksjC5qVL_327krCkhsSBrbgXa8SwUYKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408438119910-m8mkpavj0120dcjuap60h3eifu354tl1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

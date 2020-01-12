@@ -55,8 +55,8 @@ public class CollectorsRecyclerAdapter extends
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mUserName = (TextView)itemView.findViewById(R.id.text_name);
-            mUserCity = (TextView)itemView.findViewById(R.id.text_city);
+            mUserName = (TextView)itemView.findViewById(R.id.text_note_title);
+            mUserCity = (TextView)itemView.findViewById(R.id.text_note_description);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

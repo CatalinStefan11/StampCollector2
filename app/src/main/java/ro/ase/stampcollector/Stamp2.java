@@ -1,28 +1,41 @@
 package ro.ase.stampcollector;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
 
 import java.util.Objects;
 
-@Entity(tableName = "stamps")
+@Entity(tableName = "stamps",
+            foreignKeys = @ForeignKey(entity = User.class,
+            parentColumns = "id",
+            childColumns = "user_id"),
+        indices = @Index("user_id"))
 public class Stamp2 {
 
 
+        @ColumnInfo(name = "id")
         @PrimaryKey(autoGenerate = true)
-        private int id;
-        @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId")
-        private int userId;
+        public int id;
+        @ColumnInfo(name = "user_id")
+        private long userId;
+        @ColumnInfo(name = "title")
         private String title;
+        @ColumnInfo(name = "description")
         private String description;
+        @ColumnInfo(name = "issuedOn")
         private String issuedOn;
+        @ColumnInfo(name = "color")
         private String color;
+        @ColumnInfo(name = "quantity")
         private int quantity;
 
-        public Stamp2(int id, int userId, String title, String description, String issuedOn, String color, int quantity) {
-            this.id = id;
-            this.userId = userId;
+        public Stamp2( String title, String description, String issuedOn, String color, int quantity) {
+
             this.title = title;
             this.description = description;
             this.issuedOn = issuedOn;
@@ -30,19 +43,29 @@ public class Stamp2 {
             this.quantity = quantity;
         }
 
-        public int getId() {
-            return id;
+        @Ignore
+        public Stamp2()
+        {
+
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    @Override
+    public String toString() {
+        return
 
-        public int getUserId() {
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", issuedOn='" + issuedOn + '\'' +
+                ", color='" + color + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+    public long getUserId() {
             return userId;
         }
 
-        public void setUserId(int userId) {
+        public void setUserId(long userId) {
             this.userId = userId;
         }
 

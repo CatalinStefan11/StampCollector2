@@ -12,4 +12,12 @@
         android:orderInCategory="100"
         android:title="@string/action_create_note"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_curennt_user_state"
+        android:orderInCategory="100"
+        android:title="@string/action_state_user_management"
+        app:showAsAction="never" />
+
+
 </menu>

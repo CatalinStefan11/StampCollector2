@@ -7,6 +7,8 @@ public class NoteStampInfo implements Parcelable {
     private String mTitle;
     private String mText;
 
+    public NoteStampInfo(){};
+
     public NoteStampInfo(String title, String text) {
         mTitle = title;
         mText = text;

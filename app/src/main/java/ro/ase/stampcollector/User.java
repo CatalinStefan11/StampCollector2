@@ -1,53 +1,49 @@
 package ro.ase.stampcollector;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
 
-@Entity(tableName = "users")
+@Entity(tableName = "users", indices = @Index(value = "username", unique = true))
 public class User {
 
 
 
     @PrimaryKey(autoGenerate =  true)
-    private int id;
+    public long id;
+    @NonNull
+    @ColumnInfo(name = "username")
     private String username;
+    @NonNull
+    @ColumnInfo(name = "password")
     private String password;
 
-    @Ignore
-    private List<Stamp2> userStamps;
+
 
 
     public User(String username, String password) {
-        this.id = id;
         this.username = username;
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setUsername(@NonNull String username) {
+        this.username = username;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 }

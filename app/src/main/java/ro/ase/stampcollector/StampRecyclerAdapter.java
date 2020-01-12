@@ -14,11 +14,14 @@ import java.util.List;
 
 public class StampRecyclerAdapter extends RecyclerView.Adapter<StampRecyclerAdapter.ViewHolder> {
 
+    private StampRecyclerAdapter mStampRecyclerAdapter;
     private final Context mContext;
-    private final List<StampInfo> mStamps;
+    private final List<Stamp2> mStamps;
     private final LayoutInflater mLayoutInflater;
 
-    public StampRecyclerAdapter(Context context, List<StampInfo> stamps) {
+
+
+    public StampRecyclerAdapter(Context context, List<Stamp2> stamps) {
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);
         this.mStamps = stamps;
@@ -33,12 +36,15 @@ public class StampRecyclerAdapter extends RecyclerView.Adapter<StampRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        StampInfo stamp = mStamps.get(position);
+        Stamp2 stamp = mStamps.get(position);
         holder.mStampTitle.setText(stamp.getTitle());
         holder.mStampDescription.setText(stamp.getColor());
         holder.mCurrentPosition = position;
 
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -53,8 +59,8 @@ public class StampRecyclerAdapter extends RecyclerView.Adapter<StampRecyclerAdap
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mStampTitle = (TextView)itemView.findViewById(R.id.text_name);
-            mStampDescription = (TextView)itemView.findViewById(R.id.text_city);
+            mStampTitle = (TextView)itemView.findViewById(R.id.text_note_title);
+            mStampDescription = (TextView)itemView.findViewById(R.id.text_note_description);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,4 +73,7 @@ public class StampRecyclerAdapter extends RecyclerView.Adapter<StampRecyclerAdap
 
         }
     }
+
+
+
 }

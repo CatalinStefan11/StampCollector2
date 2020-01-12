@@ -1,9 +1,10 @@
 package ro.ase.stampcollector;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,16 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
-import io.reactivex.Completable;
-import io.reactivex.CompletableObserver;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.schedulers.Schedulers;
-
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -29,9 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button loginButton;
     private TextView goToRegister;
-    private StampsDatabase mStampsDatabase;
-    private UserViewModel userViewModel;
     private UserRepository mUserRepository;
+    public static final String PREFERENCES_FILE_NAME = "CVPrefs";
 
 
     @Override
@@ -44,10 +34,9 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.loginPasswordEditText);
         loginButton = (Button) findViewById(R.id.loginButton);
         goToRegister = (TextView) findViewById(R.id.registerText);
-//        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
 
         mUserRepository = UserRepository
-                .getInstance(StampsDatabase.getInstance(getApplicationContext()).userDao());
+                .getInstance(getApplicationContext());
 
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,25 +49,23 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkDataEntered()) {
-
-//                    if(userViewModel.checkValidLogin(username.getText().toString(),
-//                    password.getText().toString()))
-                    if(mUserRepository.isValidAccount(username.getText().toString(),
-                   password.getText().toString()))
-                    {
+                if (isValid()) {
 
 
-                            Intent intent = new Intent(LoginActivity.this,
-                                    MainActivity.class);
+                    if (mUserRepository.login(username.getText().toString(),
+                            password.getText().toString()) != null) {
 
-                            startActivity(intent);
 
-                            LoginActivity.this.finish();
+                        Intent intent = new Intent(LoginActivity.this,
+                                MainActivity.class);
 
+                        startActivity(intent);
+
+                        LoginActivity.this.finish();
 
                     } else {
                         Toast toast = Toast.makeText(LoginActivity.this,
@@ -96,22 +83,22 @@ public class LoginActivity extends AppCompatActivity {
         return TextUtils.isEmpty(string);
     }
 
-    private boolean checkDataEntered() {
+    private boolean isValid() {
 
-        if(isEmpty(username)) {
-            Toast toast =  Toast.makeText(this, "You must provide a username",
-                    Toast.LENGTH_SHORT);
+        if (isEmpty(username)) {
+            Toast toast = Toast.makeText(this,
+                    Resources.getSystem().getString(R.string.usernameError),
+                    Toast.LENGTH_LONG);
             toast.show();
-            username.setError("Username is required");
 
             return false;
         }
 
-        if(isEmpty(password)) {
-            Toast toast =  Toast.makeText(this, "You must provide a password",
-                    Toast.LENGTH_SHORT);
+        if (isEmpty(password)) {
+            Toast toast = Toast.makeText(this,
+                    Resources.getSystem().getString(R.string.passwordError),
+                    Toast.LENGTH_LONG);
             toast.show();
-            password.setError("Password is required");
 
             return false;
         }
@@ -119,30 +106,16 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-//    private void readData(){
-//        Completable.fromAction(new Action() {
-//            @Override
-//            public void run() throws Exception {
-//                mStampsDatabase.userDao().getUserRelation();
-//            }
-//        }).observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//                .subscribe(new CompletableObserver() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        mUserWithStamps = mStampsDatabase.userDao().getUserRelation();
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        Toast.makeText(LoginActivity.this, "Empty data",Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//    }
+
+    @Override
+    protected void onResume() {
+        SharedPreferences mySettings = getSharedPreferences(PREFERENCES_FILE_NAME, 0);
+        String username2 = mySettings.getString("username", null);
+        String password2 = mySettings.getString("password", null);
+        username.setText(username2);
+        password.setText(password2);
+        super.onResume();
+    }
+
 
 }
