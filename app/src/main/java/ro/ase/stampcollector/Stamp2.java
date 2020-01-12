@@ -10,8 +10,10 @@ import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 @Entity(tableName = "stamps",
-            foreignKeys = @ForeignKey(entity = User.class,
+            foreignKeys = @ForeignKey(onDelete = CASCADE,entity = User.class,
             parentColumns = "id",
             childColumns = "user_id"),
         indices = @Index("user_id"))

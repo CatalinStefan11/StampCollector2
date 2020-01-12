@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.List;
 
-@Entity(tableName = "users", indices = @Index(value = "username", unique = true))
+@Entity(tableName = "users", indices = @Index(value = "mUsernameText", unique = true))
 public class User {
 
 
@@ -18,10 +18,10 @@ public class User {
     @PrimaryKey(autoGenerate =  true)
     public long id;
     @NonNull
-    @ColumnInfo(name = "username")
+    @ColumnInfo(name = "mUsernameText")
     private String username;
     @NonNull
-    @ColumnInfo(name = "password")
+    @ColumnInfo(name = "mPasswordText")
     private String password;
 
 

@@ -15,11 +15,10 @@ import android.widget.Toast;
 
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "LoginActivity";
-    private EditText username;
-    private EditText password;
-    private Button loginButton;
-    private TextView goToRegister;
+    private EditText mUsernameText;
+    private EditText mPasswordText;
+    private Button mButtonLogin;
+    private TextView mGoRegister;
     private UserRepository mUserRepository;
     public static final String PREFERENCES_FILE_NAME = "CVPrefs";
 
@@ -30,15 +29,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        username = (EditText) findViewById(R.id.loginNameEditText);
-        password = (EditText) findViewById(R.id.loginPasswordEditText);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        goToRegister = (TextView) findViewById(R.id.registerText);
+        mUsernameText = (EditText) findViewById(R.id.name_login_text);
+        mPasswordText = (EditText) findViewById(R.id.pass_login_text);
+        mButtonLogin = (Button) findViewById(R.id.button_login);
+        mGoRegister = (TextView) findViewById(R.id.thenRegisterText);
 
         mUserRepository = UserRepository
                 .getInstance(getApplicationContext());
 
-        goToRegister.setOnClickListener(new View.OnClickListener() {
+        mGoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,
@@ -50,14 +49,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isValid()) {
 
 
-                    if (mUserRepository.login(username.getText().toString(),
-                            password.getText().toString()) != null) {
+                    if (mUserRepository.login(mUsernameText.getText().toString(),
+                            mPasswordText.getText().toString()) != null) {
 
 
                         Intent intent = new Intent(LoginActivity.this,
@@ -69,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     } else {
                         Toast toast = Toast.makeText(LoginActivity.this,
-                                "Wrong username", Toast.LENGTH_SHORT);
+                                "Wrong mUsernameText or mPasswordText", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
@@ -85,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isValid() {
 
-        if (isEmpty(username)) {
+        if (isEmpty(mUsernameText)) {
             Toast toast = Toast.makeText(this,
                     Resources.getSystem().getString(R.string.usernameError),
                     Toast.LENGTH_LONG);
@@ -94,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
-        if (isEmpty(password)) {
+        if (isEmpty(mPasswordText)) {
             Toast toast = Toast.makeText(this,
                     Resources.getSystem().getString(R.string.passwordError),
                     Toast.LENGTH_LONG);
@@ -110,10 +109,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         SharedPreferences mySettings = getSharedPreferences(PREFERENCES_FILE_NAME, 0);
-        String username2 = mySettings.getString("username", null);
-        String password2 = mySettings.getString("password", null);
-        username.setText(username2);
-        password.setText(password2);
+        String username2 = mySettings.getString("mUsernameText", null);
+        String password2 = mySettings.getString("mPasswordText", null);
+        mUsernameText.setText(username2);
+        mPasswordText.setText(password2);
         super.onResume();
     }
 

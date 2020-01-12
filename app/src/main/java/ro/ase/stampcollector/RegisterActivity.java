@@ -14,10 +14,10 @@ import android.widget.Toast;
 import android.content.SharedPreferences;
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username;
-    EditText password;
+    EditText mUsernameText;
+    EditText mPasswordText;
     Button mButton;
-    TextView goToLogin;
+    TextView mGoLogin;
 
     private UserRepository mUserRepository;
     public static final String PREFERENCES_FILE_NAME = "CVPrefs";
@@ -27,13 +27,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        this.username =  findViewById(R.id.registerNameEditText);
-        this.password =  findViewById(R.id.registerPasswordEditText);
-        this.mButton =  findViewById(R.id.registerButton);
-        this.goToLogin =  findViewById(R.id.loginText);
+        this.mUsernameText =  findViewById(R.id.name_register_text);
+        this.mPasswordText =  findViewById(R.id.pass_register_text);
+        this.mButton =  findViewById(R.id.button_register);
+        this.mGoLogin =  findViewById(R.id.loginText);
 
 
-        goToLogin.setOnClickListener(new View.OnClickListener() {
+        mGoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this,
@@ -51,12 +51,12 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isValid()) {
-                    mUserRepository.addUser(username.getText().toString(),
-                            password.getText().toString());
+                    mUserRepository.addUser(mUsernameText.getText().toString(),
+                            mPasswordText.getText().toString());
                     SharedPreferences settingsFile = getSharedPreferences(PREFERENCES_FILE_NAME, 0);
                     SharedPreferences.Editor myEditor = settingsFile.edit();
-                    myEditor.putString("username", username.getText().toString());
-                    myEditor.putString("password", password.getText().toString());
+                    myEditor.putString("mUsernameText", mUsernameText.getText().toString());
+                    myEditor.putString("mPasswordText", mPasswordText.getText().toString());
                     myEditor.apply();
                     Intent intent = new Intent(RegisterActivity.this,
                             LoginActivity.class);
@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isValid() {
 
-        if (isEmpty(username)) {
+        if (isEmpty(mUsernameText)) {
             Toast toast = Toast.makeText(this,
                     Resources.getSystem().getString(R.string.usernameError),
                     Toast.LENGTH_LONG);
@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
 
-        if (isEmpty(password)) {
+        if (isEmpty(mPasswordText)) {
             Toast toast = Toast.makeText(this,
                     Resources.getSystem().getString(R.string.passwordError),
                     Toast.LENGTH_LONG);
